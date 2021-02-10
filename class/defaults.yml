@@ -1,3 +1,8 @@
 parameters:
   eventrouter:
     namespace: syn-eventrouter
+    images:
+      eventrouter:
+        registry: "gcr.io"
+        image: "heptio-images/eventrouter"
+        tag: v0.3

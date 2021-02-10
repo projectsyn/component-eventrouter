@@ -9,4 +9,3 @@ parameters:
           - eventrouter/component/main.jsonnet
         input_type: jsonnet
         output_path: eventrouter/
-

@@ -1,3 +1,7 @@
 parameters:
   eventrouter:
     namespace: syn-eventrouter
+    images:
+      eventrouter:
+        image: "gcr.io/heptio-images/eventrouter"
+        tag: "latest"

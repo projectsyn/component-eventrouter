@@ -3,5 +3,6 @@ parameters:
     namespace: syn-eventrouter
     images:
       eventrouter:
-        image: "gcr.io/heptio-images/eventrouter"
+        registry: "gcr.io"
+        image: "heptio-images/eventrouter"
         tag: "latest"

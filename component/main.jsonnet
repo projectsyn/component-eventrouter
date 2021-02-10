@@ -11,18 +11,14 @@ local serviceaccount = kube.ServiceAccount('eventrouter') {
   },
 };
 
-local clusterrole = kube.ClusterRole('eventrouter') {
+local clusterrole = kube.ClusterRole('syn-eventrouter') {
   rules: [
     { apiGroups: [ '*' ], resources: [ 'events' ], verbs: [ 'get', 'watch', 'list' ] },
   ],
 };
 
-local clusterrolebinding = kube.ClusterRoleBinding('eventrouter') {
-  roleRef+: {
-    apiGroup: 'rbac.authorization.k8s.io',
-    kind: 'ClusterRole',
-    name: 'eventrouter',
-  },
+local clusterrolebinding = kube.ClusterRoleBinding('syn-eventrouter') {
+  roleRef_: clusterrole,
   subjects_: [ serviceaccount ],
 };
 
@@ -48,7 +44,7 @@ local deployment = kube.Deployment('eventrouter') {
       spec+: {
         containers_+: {
           'kube-eventrouter': kube.Container('kube-eventrouter') {
-            image: params.images.eventrouter.image + ':' + params.images.eventrouter.tag,
+            image: params.images.eventrouter.registry + '/' + params.images.eventrouter.image + ':' + params.images.eventrouter.tag,
             imagePullPolicy: 'Always',
             volumeMounts: [
               {

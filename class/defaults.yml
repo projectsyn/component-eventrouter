@@ -5,4 +5,4 @@ parameters:
       eventrouter:
         registry: "gcr.io"
         image: "heptio-images/eventrouter"
-        tag: "latest"
+        tag: v0.3

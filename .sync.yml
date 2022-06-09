@@ -1,6 +1,2 @@
 :global:
   componentName: eventrouter
-
-docs/antora.yml:
-  name: eventrouter
-  title: eventrouter

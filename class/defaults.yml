@@ -1,8 +1,18 @@
 parameters:
   eventrouter:
     namespace: syn-eventrouter
+
     images:
       eventrouter:
-        registry: "gcr.io"
-        image: "heptio-images/eventrouter"
-        tag: v0.3
+        registry: "registry.redhat.io"
+        image: "openshift-logging/eventrouter-rhel8"
+        tag: v0.4
+
+    resources:
+      eventrouter:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi

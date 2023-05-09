@@ -11,7 +11,7 @@ parameters:
     resources:
       eventrouter:
         requests:
-          cpu: 55m
+          cpu: 50m
           memory: 128Mi
         limits:
           cpu: 200m

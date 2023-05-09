@@ -45,7 +45,8 @@ local deployment = kube.Deployment('eventrouter') {
         containers_+: {
           'kube-eventrouter': kube.Container('kube-eventrouter') {
             image: params.images.eventrouter.registry + '/' + params.images.eventrouter.image + ':' + params.images.eventrouter.tag,
-            imagePullPolicy: 'Always',
+            imagePullPolicy: 'IfNotPresent',
+            resources: params.resources.eventrouter,
             volumeMounts: [
               {
                 name: 'config-volume',
@@ -53,9 +54,6 @@ local deployment = kube.Deployment('eventrouter') {
               },
             ],
           },
-        },
-        securityContext: {
-          runAsUser: 10001,
         },
         serviceAccountName: serviceaccount.metadata.name,
         volumes: [

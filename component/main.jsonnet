@@ -1,4 +1,5 @@
 // main template for eventrouter
+local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
 local kube = import 'lib/kube.libjsonnet';
 local inv = kap.inventory();
@@ -45,7 +46,7 @@ local deployment = kube.Deployment('eventrouter') {
         containers_+: {
           'kube-eventrouter': kube.Container('kube-eventrouter') {
             image: params.images.eventrouter.registry + '/' + params.images.eventrouter.image + ':' + params.images.eventrouter.tag,
-            imagePullPolicy: 'Always',
+            resources: params.resources.eventrouter,
             volumeMounts: [
               {
                 name: 'config-volume',
@@ -53,9 +54,6 @@ local deployment = kube.Deployment('eventrouter') {
               },
             ],
           },
-        },
-        securityContext: {
-          runAsUser: 10001,
         },
         serviceAccountName: serviceaccount.metadata.name,
         volumes: [
@@ -66,7 +64,7 @@ local deployment = kube.Deployment('eventrouter') {
             },
           },
         ],
-      },
+      } + com.makeMergeable(params.spec),
     },
   },
 };

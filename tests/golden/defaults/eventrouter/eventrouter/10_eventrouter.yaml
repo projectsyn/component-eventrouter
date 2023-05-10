@@ -84,9 +84,16 @@ spec:
         - args: []
           env: []
           image: gcr.io/heptio-images/eventrouter:v0.3
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: kube-eventrouter
           ports: []
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
           stdin: false
           tty: false
           volumeMounts:

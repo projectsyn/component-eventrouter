@@ -11,9 +11,53 @@ default:: `syn-eventrouter`
 The namespace in which to deploy this component.
 
 
+== `resources`
+
+[horizontal]
+type:: dict
+default::
++
+[source,yaml]
+----
+components:
+  eventrouter:
+    resources:
+      eventrouter:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
+----
+
+Configure resource requests and limits for eventrouter container.
+
+
+== `spec`
+
+[horizontal]
+type:: dict
+default::
++
+[source,yaml]
+----
+components:
+  eventrouter:
+    spec:
+      securityContext:
+        runAsUser: 10001
+----
+
+Configure additional spec for deployment.
+
+
 == Example
 
 [source,yaml]
 ----
-namespace: example-namespace
+components:
+  eventrouter:
+    namespace: example-namespace
+    ~spec: {}
 ----

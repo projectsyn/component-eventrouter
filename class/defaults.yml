@@ -4,9 +4,9 @@ parameters:
 
     images:
       eventrouter:
-        registry: "registry.redhat.io"
-        image: "openshift-logging/eventrouter-rhel8"
-        tag: v0.4
+        registry: "gcr.io"
+        image: "heptio-images/eventrouter"
+        tag: v0.3
 
     resources:
       eventrouter:
@@ -16,3 +16,7 @@ parameters:
         limits:
           cpu: 200m
           memory: 256Mi
+
+    spec:
+      securityContext:
+        runAsUser: 10001

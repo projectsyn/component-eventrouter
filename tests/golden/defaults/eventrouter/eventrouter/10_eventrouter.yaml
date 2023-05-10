@@ -83,7 +83,7 @@ spec:
       containers:
         - args: []
           env: []
-          image: registry.redhat.io/openshift-logging/eventrouter-rhel8:v0.4
+          image: gcr.io/heptio-images/eventrouter:v0.3
           imagePullPolicy: IfNotPresent
           name: kube-eventrouter
           ports: []
@@ -101,6 +101,8 @@ spec:
               name: config-volume
       imagePullSecrets: []
       initContainers: []
+      securityContext:
+        runAsUser: 10001
       serviceAccountName: eventrouter
       terminationGracePeriodSeconds: 30
       volumes:

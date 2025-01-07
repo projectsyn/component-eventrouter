@@ -1,5 +1,7 @@
 parameters:
   eventrouter:
+    =_metadata:
+      multi_tenant: true
     namespace: syn-eventrouter
 
     images:

@@ -6,8 +6,9 @@ parameters:
 
     images:
       eventrouter:
-        registry: "gcr.io"
-        image: "heptio-images/eventrouter"
+        # Image mirrored from gcr.io/heptio-images/eventrouter:v0.3 as Heptio is long gone and gcr.io to be shut down in March 2025.
+        registry: "ghcr.io"
+        image: "projectsyn/component-eventrouter"
         tag: v0.3
 
     resources:

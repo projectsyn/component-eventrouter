@@ -11,6 +11,27 @@ default:: `syn-eventrouter`
 The namespace in which to deploy this component.
 
 
+== `image`
+
+[horizontal]
+type:: dict
+default::
++
+[source,yaml]
+----
+eventrouter:
+  registry: "ghcr.io"
+  image: "projectsyn/component-eventrouter"
+  tag: v0.3
+----
+
+The images to use for the eventrouter pods.
+
+[IMPORTANT]
+====
+The `eventrouter` image is mirrored from the upstream image `gcr.io/heptio-images/eventrouter:v0.3` as Heptio is long gone and the Google Container Registry (gcr) is to be shut down in March 2025.
+====
+
 == `resources`
 
 [horizontal]

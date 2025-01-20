@@ -83,7 +83,7 @@ spec:
       containers:
         - args: []
           env: []
-          image: gcr.io/heptio-images/eventrouter:v0.3
+          image: ghcr.io/projectsyn/component-eventrouter:v0.3
           imagePullPolicy: IfNotPresent
           name: kube-eventrouter
           ports: []
